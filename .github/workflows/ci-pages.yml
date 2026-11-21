@@ -1,0 +1,72 @@
+# Runs the full test suite on every push and pull request.
+# Deployment to GitHub Pages is DISABLED until the repository variable
+# PAGES_DEPLOY_ENABLED is set to "true" (Settings > Secrets and variables > Actions > Variables).
+# Even then, it deploys only from the main branch and only after every test passes.
+name: Test and deploy
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install test tools
+        run: |
+          python -m pip install -r requirements-test.txt
+          python -m playwright install --with-deps chromium
+          npm install --no-save --no-package-lock axe-core@4
+          mkdir -p vendor && cp node_modules/axe-core/axe.min.js vendor/axe.min.js
+
+      - name: Build the standalone single-file distribution
+        run: python tools/build_standalone.py
+
+      - name: Run tests
+        # tests/phase1: v0.3.2 vs the frozen v0.3.3-rc1 (APERION_TARGETS default baseline,rc1,rc1-standalone)
+        # tests/phase2: the v0.4.0 build, modular and standalone (APERION_P2_TARGETS default site,standalone)
+        run: python -m pytest -p no:cacheprovider --junitxml=test-results.xml
+
+      - name: Keep test results and screenshot differences
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            test-results.xml
+            tests/output/
+            dist/
+          if-no-files-found: ignore
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && vars.PAGES_DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
