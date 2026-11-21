@@ -1,0 +1,39 @@
+# Emergency rollback: publishes the preserved, unchanged v0.3.2 file to GitHub Pages.
+# Runs only when started by hand: Actions > "Rollback Pages to v0.3.2" > Run workflow.
+# It does not run tests (v0.3.2 is the reference the tests compare against) and does not
+# change any branch; it only replaces what Pages is serving.
+name: Rollback Pages to v0.3.2
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type ROLLBACK to publish v0.3.2'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  rollback:
+    if: github.event.inputs.confirm == 'ROLLBACK'
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the baseline checksum
+        run: cd baseline/v0.3.2 && sha256sum -c CHECKSUMS.txt
+      - name: Stage only the v0.3.2 page
+        run: mkdir -p rollback-site && cp baseline/v0.3.2/index.html rollback-site/index.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: rollback-site
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        
