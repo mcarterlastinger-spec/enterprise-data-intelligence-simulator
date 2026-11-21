@@ -1,0 +1,105 @@
+<!doctype html><html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aperion | Enterprise Data Intelligence Simulator</title>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/next-step.css">
+  </head>
+  <body>
+    <div class="layout">
+      <aside>
+        <div class="brand">APERION<span style="font-size:10px;vertical-align:top">™</span></div>
+        <div class="brand-sub">ENTERPRISE DATA INTELLIGENCE</div>
+        <nav aria-label="Main navigation"><button class="nav active" id="nav-work" data-action="showPage:work">▦ &nbsp; Customer Records</button><button class="nav" id="nav-compare" data-action="showPage:compare">⇄ &nbsp; Match & Compare</button><button class="nav" id="nav-brief" data-action="showPage:brief">◉ &nbsp; Mission Briefing</button><button class="nav" disabled title="Planned for next milestone">◇ &nbsp; Golden Record (next)</button><button class="nav" disabled title="Planned for next milestone">✓ &nbsp; Validation (next)</button></nav></aside>
+      <main>
+        <header class="top">
+          <div>
+            <div class="eyebrow">Case EDI-001 · Northbridge Health</div>
+            <h1 id="page-title">Customer Record Workspace</h1></div><span class="pill">FUNCTIONAL PROTOTYPE · V0.3.3</span></header>
+        <div class="content">
+          <div id="page-work">
+            <div class="intro">
+              <section class="panel">
+                <div class="eyebrow">Active investigation</div>
+                <h2>The Customer Identity Crisis</h2>
+                <p>Investigate customer identities across CRM, ERP, and Rebate Management. Examine evidence before making a matching decision. The same name does not necessarily mean the same legal entity.</p>
+                <div class="notice"><strong>Business impact:</strong> A fictional $184,500 rebate payment is delayed while customer identities are reconciled.</div><button class="secondary" data-action="showPage:brief">View mission briefing</button></section>
+              <section class="panel">
+                <div class="avatar"><img class="portrait" src="assets/avatars/maya-chen.png" alt="Maya Chen avatar portrait" width="72" height="72">
+                  <div>
+                    <div class="eyebrow">Your guide</div>
+                    <h2 style="margin:2px 0">Maya Chen</h2>
+                    <div class="muted small">Director, Data Governance</div></div></div>
+                <p id="maya-message">Welcome to the investigation. Start by searching for Northbridge records. Inspect identifiers and relationships before deciding which records belong together.</p>
+                <div class="controls"><button class="primary audio-toggle" data-source="maya-message" data-action="toggleAudio:maya-message" aria-pressed="false">▶ Play</button><button class="secondary audio-replay" data-source="maya-message" data-action="replayAudio:maya-message" aria-pressed="false">↺ Replay</button></div><label class="small" for="voice-choice">Maya voice</label><select id="voice-choice" aria-label="Select Maya voice"><option value="">Checking available voices…</option></select>
+                <p class="small muted" id="audio-status" aria-live="polite">Audio is optional. Full dialogue is shown above.</p></section></div>
+            <div class="statrow">
+              <div class="stat"><strong id="stat-all">6</strong><span class="muted">Source records</span></div>
+              <div class="stat"><strong>3</strong><span class="muted">Source systems</span></div>
+              <div class="stat"><strong id="stat-visible">6</strong><span class="muted">Records in current view</span></div></div>
+            <section class="panel">
+              <h2>Customer Records</h2>
+              <div class="toolbar"><label class="hidden" for="search">Search records</label><input id="search" aria-label="Search customer name, record ID, address, or tax identifier" placeholder="Search customer, ID, address, or tax ID…"><select id="system" aria-label="Filter by source system"><option value="">All source systems</option><option>CRM</option><option>ERP</option><option>Rebates</option></select><select id="status" aria-label="Filter by record status"><option value="">All statuses</option><option>Active</option><option>Pending</option></select><button class="secondary" data-action="resetFilters">Reset</button></div>
+              <div class="tablewrap">
+                <table>
+                  <thead>
+                    <tr><th scope="col">Compare</th><th scope="col">Record ID</th><th scope="col">Customer</th><th scope="col">Source</th><th scope="col">Status</th><th scope="col">Last verified</th></tr></thead>
+                  <tbody id="rows"></tbody></table></div>
+              <p class="count" id="results" aria-live="polite"></p>
+              <div class="controls"><button class="secondary" data-action="selectAllVisible">Select all visible</button><button class="secondary" data-action="selectAllRecords">Select all records</button><button class="secondary" data-action="clearSelection">Clear selection</button><button class="primary" id="compare-btn" data-action="showPage:compare" disabled>Evaluate selected records (0)</button></div></section>
+            <section class="panel details hidden" id="details" aria-live="polite">
+              <div class="controls" style="justify-content:space-between;align-items:center">
+                <h2 id="details-title">Record details</h2><button class="secondary" data-action="closeDetails">Close details</button></div>
+              <div class="detailgrid" id="details-fields"></div></section></div>
+          <div id="page-brief" class="hidden">
+            <section class="panel">
+              <div class="eyebrow">Mission briefing · Maya Chen</div>
+              <h2>Your assignment</h2>
+              <div class="avatar"><img class="portrait" src="assets/avatars/maya-chen.png" alt="Maya Chen avatar portrait" width="72" height="72">
+                <div>
+                  <p id="brief-text">I'm Maya Chen, Director of Data Governance. We have customer records that may refer to the same organization, but the evidence is inconsistent. Your job is to investigate the source data, identify credible matches, and avoid consolidating separate legal entities. Begin by inspecting the records. Evaluate all available records together, propose identity groups, and explain what the evidence tells you.</p>
+                  <div class="controls"><button class="primary audio-toggle" data-source="brief-text" data-action="toggleAudio:brief-text" aria-pressed="false">▶ Play</button><button class="secondary audio-replay" data-source="brief-text" data-action="replayAudio:brief-text" aria-pressed="false">↺ Replay</button><button class="secondary" data-action="showPage:work">Open records workspace</button></div>
+                  <p class="small muted">Audio optional; the full transcript appears above. This version uses illustrated avatar portraits and your browser's speech synthesis, if supported.</p></div></div></section></div>
+          <section class="panel" style="margin-top:16px">
+            <h2>Case stakeholders</h2>
+            <p class="muted small">Meet the professionals involved in the Northbridge investigation. Additional stakeholder conversations are planned for a later milestone.</p>
+            <div class="cast-grid">
+              <div class="cast-member"><img src="assets/avatars/maya-chen.png" alt="Maya Chen avatar portrait">
+                <div><strong>Maya Chen</strong>
+                  <div class="small muted">Data Governance</div></div></div>
+              <div class="cast-member"><img src="assets/avatars/priya-shah.png" alt="Priya Shah avatar portrait">
+                <div><strong>Priya Shah</strong>
+                  <div class="small muted">Finance Operations</div></div></div>
+              <div class="cast-member"><img src="assets/avatars/daniel-brooks.png" alt="Daniel Brooks avatar portrait">
+                <div><strong>Daniel Brooks</strong>
+                  <div class="small muted">Systems Architecture</div></div></div>
+              <div class="cast-member"><img src="assets/avatars/marcus-reed.png" alt="Marcus Reed avatar portrait">
+                <div><strong>Marcus Reed</strong>
+                  <div class="small muted">Commercial Operations</div></div></div></div></section>
+          <div id="page-compare" class="hidden">
+            <section class="panel">
+              <h2>Record comparison</h2>
+              <p class="muted">Select any number of records in the Customer Records workspace. Compare evidence across all selected records, organize identity groups, and submit proposed merges for governance review.</p>
+              <div id="compare-content"></div></section></div>
+          <section id="next-step-bar" class="next-step-bar" aria-label="Learning activity navigation">
+            <div class="next-step-copy"><strong id="next-step-heading">Next Step</strong><span id="next-step-description">Continue when you are ready. Narration is optional.</span></div><button type="button" id="next-step-button" class="next-step-button" data-action="advanceLearning">Next Step: Explore Customer Records →</button></section>
+          <div class="foot">APERION™ is a fictional training environment. All records, organizations, and financial values are fabricated. Prototype v0.3.3 · No data is transmitted or stored on a server.</div></div></main></div>
+<!-- Script order matters; see js/namespace.js -->
+<script src="js/namespace.js"></script>
+<script src="js/util.js"></script>
+<script src="js/data/records.js"></script>
+<script src="js/data/attributes.js"></script>
+<script src="js/state.js"></script>
+<script src="js/rules/matching.js"></script>
+<script src="js/rules/governance.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/views/records.js"></script>
+<script src="js/views/compare.js"></script>
+<script src="js/bindings.js"></script>
+<script src="js/main.js"></script>
+</body></html>

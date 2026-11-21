@@ -1,0 +1,2 @@
+9d7698340682c7df823345a19a524a24c7330ca3467b7e03c554a6124c7bb530  index.html
+a2b8aef2a234447363afc47391faa17cb7b84ed41a88465fd47dbff53901abe8  Enterprise_Data_Intelligence_Prototype_v0.3.2.zip

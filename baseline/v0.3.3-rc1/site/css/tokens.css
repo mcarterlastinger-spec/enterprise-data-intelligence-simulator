@@ -1,0 +1,13 @@
+/* Aperion v0.3.3 | Design tokens. Approved visual identity: Midnight #101D35 (--navy), Cobalt #2457B8 (--blue),
+   Steel Gray #71839D (--steel), Warm Ivory #F8F6F0 (--ivory). Values unchanged from v0.3.2.
+   Load order: tokens, base, responsive, components, next-step. Do not reorder. */
+
+:root {
+  --navy:#101d35;
+  --blue:#2457b8;
+  --steel:#71839d;
+  --ivory:#f8f6f0;
+  --line:#d8dce5;
+  --ink:#17263d;
+  --white:#fff;
+}
