@@ -1,0 +1,7 @@
+................................................s...s................... [ 36%]
+...............................................s........................ [ 73%]
+....................................................                     [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/phase1/browser/test_structure.py:130: applies to the standalone build only
+SKIPPED [1] tests/phase2/test_preserved.py:45: standalone build only
+SKIPPED [1] tests/phase1/browser/test_structure.py:62: load order is checked on the multi-file site

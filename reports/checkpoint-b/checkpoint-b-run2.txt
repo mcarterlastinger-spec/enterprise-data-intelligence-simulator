@@ -1,0 +1,7 @@
+.s....................................................sssss.s........... [ 28%]
+...............................................s......s......s......s... [ 57%]
+...s.....s.....s.....s.....s.....s.....s.....s.....s....s....s....s..... [ 86%]
+...................................                                      [100%]
+=========================== short test summary info ============================
+SKIPPED [18] tests/a11y/test_accessibility.py:70: axe-core not installed locally (vendor/axe.min.js); this test runs in GitHub Actions
+SKIPPED [5] tests/browser/test_structure.py:18: structure checks apply to the restructured application only

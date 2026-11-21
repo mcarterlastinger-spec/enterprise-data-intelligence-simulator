@@ -1,0 +1,12 @@
+.s.....................................................sssssss.s........ [ 18%]
+..................................................ss.s.................. [ 37%]
+......................................s..s.s......s......s......s......s [ 55%]
+......s......s.....s.....s.....s.....s.....s.....s.....s.....s.....s.... [ 74%]
+.s.....s.....s....s....s....s....s....s................................. [ 93%]
+..........................                                               [100%]
+=========================== short test summary info ============================
+SKIPPED [27] tests/a11y/test_accessibility.py:70: axe-core not installed locally (vendor/axe.min.js); this test runs in GitHub Actions
+SKIPPED [5] tests/phase1/browser/test_structure.py:18: structure checks apply to the restructured application only
+SKIPPED [2] tests/phase1/browser/test_structure.py:97: applies to the standalone build only
+SKIPPED [3] tests/phase1/browser/test_structure.py:130: applies to the standalone build only
+SKIPPED [1] tests/phase1/browser/test_structure.py:62: load order is checked on the multi-file site

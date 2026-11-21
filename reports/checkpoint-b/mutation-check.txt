@@ -1,0 +1,17 @@
+Mutation check on the RESTRUCTURED application, 2026-11-05.
+Each change was applied to a scratch copy of site/ and the suite was run with
+APERION_TARGETS=site, stopping at the first failure.
+
+Change                                                          First test that failed
+governance.js: tax-ID blocking loosened (>1 -> >2)              test_C2_conflicting_tax_ids_blocked
+matching.js: "Missing evidence" only when all values missing    test_CMP1_matrix_all_records
+index.html: Match & Compare nav button bound to Records         test_CMP1_matrix_all_records
+tokens.css: Cobalt #2457b8 -> #2457b9 (one digit)               test_E3_screenshot_matches_baseline[brief-1366]
+compare.js: Clear groups also clears deselected records         test_T3_clear_groups_affects_only_selected_records
+audio.js: speech rate 0.94 -> 1                                 test_A2_play_pause_resume_cycle
+index.html: matching.js script tag removed                      test_A1 (startup stopped with load-order error)
+index.html: responsive.css and components.css swapped           NOT DETECTED - full suite passed
+
+Result: 7 of 8 detected. The undetected change is an equivalent mutation: the two
+stylesheets share no selectors, so swapping them cannot change any rendering. The
+load order in index.html is still documented and should be kept.

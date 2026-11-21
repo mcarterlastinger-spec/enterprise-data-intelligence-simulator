@@ -1,0 +1,19 @@
+Mutation check, 2026-11-05: each change below was applied to a scratch copy of site/index.html.
+The suite was run against it with APERION_TARGETS=site and stopped at the first failure.
+Every change was detected.
+
+Change                                               First test that failed
+Cobalt color #2457b8 -> #2458b8                      test_E3_screenshot_matches_baseline[site-brief-1366]
+Button text "Validate proposed groups" changed       test_K2_tab_order_matches_baseline[site-compare]
+Tax-ID blocking rule loosened (>1 -> >2)             test_C2_conflicting_tax_ids_blocked[site]
+Speech rate 0.94 -> 1                                test_A2_play_pause_resume_cycle[site]
+Panel padding 21px -> 22px                           test_E2_accessibility_tree_matches_baseline[site-brief]
+Next Step on Compare goes to Briefing, not Records   test_N1_next_step_full_path[site]
+
+Revision 1 (2026-11-05): a full run after the D10 reclassification found one failure
+in test_E3_screenshot_matches_baseline[baseline-work-details-768], comparing the baseline
+with itself (2.9% of pixels, all in the sticky Next Step bar). Cause: a smooth scroll started
+by "open record details" was still running when the screenshot was taken. This was a test
+timing fault, not an application difference. Fix: the test now waits for scrolling to settle
+before capturing. Verification: the 30 most scroll-sensitive comparisons were repeated 5 times
+(150 runs, 0 failures), then the full suite passed (checkpoint-a-r1-run.xml).

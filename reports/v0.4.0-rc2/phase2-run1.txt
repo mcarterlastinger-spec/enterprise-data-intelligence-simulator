@@ -1,0 +1,10 @@
+....................................................s..s................ [ 27%]
+......................................................s................. [ 54%]
+...........s............................................................ [ 81%]
+.........s....s..........................s.s......                       [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/phase1/browser/test_structure.py:130: applies to the standalone build only
+SKIPPED [1] tests/phase2/test_preserved.py:48: standalone build only
+SKIPPED [1] tests/phase2/test_contrast_v040.py:114: runs once
+SKIPPED [1] tests/phase1/browser/test_structure.py:62: load order is checked on the multi-file site
+SKIPPED [4] tests/phase2/test_preserved.py:123: compared as markup at this width (test_E2)
