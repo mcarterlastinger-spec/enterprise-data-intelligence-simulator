@@ -1,0 +1,451 @@
+/* Aperion v0.4.0 | Labelled filters, contextual stakeholders, Phase 2 pages, and the compact
+   Next Step bar for constrained viewports (decision P2-5: Edge 200% zoom).
+   Load order: tokens, base, responsive, components, next-step, workflow, compact-nav. */
+
+/* Keyboard focus and scrolled-to elements stay above the persistent Next Step bar. */
+html {
+  scroll-padding-bottom:130px;
+}
+
+/* ---- visible filter labels ---- */
+.labelled-filters {
+  align-items:flex-end;
+}
+
+.filter-field {
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.filter-field label {
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink);
+}
+
+.filter-search {
+  flex:1;
+  min-width:220px;
+}
+
+.filter-search input {
+  width:100%;
+  min-width:0;
+  box-sizing:border-box;
+}
+
+.brief-audio-status:not(:empty) {
+  display:block;
+  margin-top:6px;
+  color:#3d4f68;
+}
+
+/* ---- contextual stakeholder guidance ---- */
+.stakeholder-prompt {
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  background:#fff;
+  border:1px solid var(--line);
+  border-left:5px solid var(--steel);
+  border-radius:10px;
+  padding:12px 14px;
+  margin:0 0 16px;
+}
+
+.stakeholder-prompt img {
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  object-fit:cover;
+  flex:none;
+}
+
+.stakeholder-prompt p {
+  margin:0;
+}
+
+.sp-text {
+  margin-top:4px!important;
+}
+
+/* ---- validation and debrief ---- */
+.validation-group {
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:16px;
+  margin:16px 0;
+  background:#fff;
+}
+
+.validation-group h3 {
+  margin:0 0 10px;
+  color:var(--navy);
+}
+
+.validation-group h3:focus,.debrief-summary h2:focus {
+  outline:3px solid var(--blue);
+  outline-offset:3px;
+}
+
+.basis {
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:10px 14px;
+  margin:0 0 12px;
+}
+
+.basis legend {
+  font-weight:700;
+  color:var(--navy);
+}
+
+.validation-group textarea {
+  width:100%;
+  box-sizing:border-box;
+  padding:9px;
+  border:1px solid #6f7f96;
+  border-radius:6px;
+  font:inherit;
+}
+
+.checklist,.criteria,.advisories,.finish-blockers {
+  list-style:none;
+  padding:0;
+  margin:8px 0;
+}
+
+.checklist li,.criteria li {
+  display:block;
+  margin:6px 0;
+}
+
+.mark {
+  display:inline-block;
+  width:1.4em;
+  font-weight:700;
+}
+
+.checklist .pass .mark,.criteria .met .mark {
+  color:#1d6b35;
+}
+
+.checklist .fail .mark,.criteria .unmet .mark {
+  color:#a11b1b;
+}
+
+.advisories li {
+  color:#7a3e00;
+  margin:4px 0;
+}
+
+.advisories li::before,.finish-blockers li::before {
+  content:"\2022  ";
+}
+
+.submitted {
+  color:#1d6b35;
+}
+
+.changed {
+  color:#8a4f00;
+}
+
+.np-record {
+  border-top:1px solid var(--line);
+  padding-top:10px;
+  margin-top:10px;
+}
+
+.debrief-summary {
+  border:1px solid var(--line);
+  border-left:6px solid var(--blue);
+  border-radius:10px;
+  padding:16px;
+  background:#fff;
+  margin-bottom:16px;
+}
+
+.debrief-summary h2 {
+  margin-top:0;
+  color:var(--navy);
+}
+
+.comp-overview {
+  list-style:none;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:10px;
+}
+
+.comp-overview li {
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:10px 12px;
+  background:var(--ivory);
+}
+
+.competency {
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:14px 16px;
+  margin:14px 0;
+  background:#fff;
+}
+
+.comp-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.comp-head h3 {
+  margin:0;
+  color:var(--navy);
+}
+
+.comp-score {
+  margin:0;
+}
+
+.level {
+  display:inline-block;
+  padding:2px 9px;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:700;
+  border:1px solid;
+}
+
+.lvl-proficient {
+  color:#1d6b35;
+  background:#edf6ef;
+  border-color:#9cc8a8;
+}
+
+.lvl-developing {
+  color:#7a3e00;
+  background:#fff2db;
+  border-color:#e2bd7a;
+}
+
+.lvl-practice {
+  color:#a11b1b;
+  background:#fdecec;
+  border-color:#e6a3a3;
+}
+
+.crit-title {
+  margin:0;
+  font-weight:600;
+}
+
+.crit-feedback {
+  margin:2px 0 0 1.4em;
+  color:#2b3b52;
+}
+
+.scoring-help {
+  margin-top:12px;
+}
+
+.scoring-help summary,.sub-history summary {
+  cursor:pointer;
+  font-weight:600;
+  color:var(--blue);
+}
+
+/* ---- compact Next Step bar: hidden extras on large screens ---- */
+.nsb-menu,.nsb-why {
+  display:none;
+}
+
+.nsb-menu-panel {
+  display:none;
+}
+
+/* ---- compact Next Step bar: narrow or short viewports (e.g. Edge at 200% zoom) ---- */
+@media (max-width:980px),(max-height:600px) {
+  html {
+    scroll-padding-bottom:84px;
+  }
+  .next-step-bar {
+    position:sticky;
+    bottom:0;
+    margin:16px -12px 0;
+    padding:6px 8px;
+    gap:8px;
+    flex-wrap:nowrap;
+    align-items:center;
+    border-radius:10px 10px 0 0;
+    border-width:2px 2px 0 5px;
+  }
+  .nsb-menu,.nsb-why {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:none;
+    min-height:44px;
+    min-width:44px;
+    padding:6px 10px;
+    border:1px solid #6f7f96;
+    border-radius:8px;
+    background:#fff;
+    color:var(--navy);
+    font:inherit;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .nsb-menu[aria-expanded="true"],.nsb-why[aria-expanded="true"] {
+    background:#edf2fc;
+    border-color:var(--blue);
+  }
+  .nsb-menu:focus-visible,.nsb-why:focus-visible {
+    outline:3px solid var(--blue);
+    outline-offset:2px;
+  }
+  .next-step-copy {
+    min-width:0;
+    flex:1;
+    gap:0;
+  }
+  .next-step-copy strong {
+    font-size:14px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  /* Collapsed explanation: still read by screen readers through aria-describedby. */
+  #next-step-description {
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+  }
+  .next-step-bar.why-open #next-step-description {
+    position:absolute;
+    left:8px;
+    right:8px;
+    bottom:calc(100% + 6px);
+    width:auto;
+    height:auto;
+    clip:auto;
+    white-space:normal;
+    padding:10px 12px;
+    background:#fff;
+    border:2px solid var(--blue);
+    border-radius:8px;
+    box-shadow:0 6px 18px rgba(16,29,53,.2);
+    font-size:14px;
+    color:var(--ink);
+  }
+  .next-step-button {
+    width:auto;
+    flex:0 1 auto;
+    max-width:60%;
+    min-height:44px;
+    padding:6px 12px!important;
+    font-size:14px!important;
+    line-height:1.2;
+  }
+  .nsb-menu-panel {
+    display:block;
+    position:absolute;
+    left:8px;
+    bottom:calc(100% + 6px);
+    min-width:240px;
+    max-width:calc(100% - 16px);
+    max-height:calc(100vh - 90px);
+    overflow:auto;
+    background:#fff;
+    border:2px solid var(--blue);
+    border-radius:10px;
+    box-shadow:0 8px 24px rgba(16,29,53,.25);
+    padding:6px;
+    z-index:20;
+  }
+  .nsb-menu-panel[hidden] {
+    display:none;
+  }
+  .nsb-menu-panel ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .nsb-item {
+    display:block;
+    width:100%;
+    text-align:left;
+    min-height:44px;
+    padding:8px 12px;
+    border:0;
+    border-radius:7px;
+    background:#fff;
+    color:var(--navy);
+    font:inherit;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .nsb-item.active {
+    background:var(--blue);
+    color:#fff;
+  }
+  .nsb-item:disabled {
+    color:#5c6b80;
+    cursor:not-allowed;
+  }
+  .nsb-item:focus-visible {
+    outline:3px solid var(--blue);
+    outline-offset:-3px;
+  }
+  /* The current activity is Cobalt-filled: show focus as a white ring inside it (6.7:1). */
+  .nsb-item.active:focus-visible {
+    outline-color:#fff;
+    outline-offset:-6px;
+  }
+}
+
+/* Short viewports (Edge at 200% on a laptop): fit all six activities in the menu without scrolling. */
+@media (max-height:400px) {
+  .nsb-menu-panel {
+    padding:4px;
+  }
+  .nsb-item {
+    min-height:36px;
+    padding:4px 12px;
+  }
+}
+
+@media (max-width:480px) {
+  .next-step-copy {
+    display:none;
+  }
+  .next-step-button {
+    flex:1;
+    max-width:none;
+  }
+}
+
+/* Very short viewports (e.g. 400% zoom on a laptop): keep the bar in the page flow so it never
+   covers most of the screen; Menu and Next Step remain at the end of each activity. */
+@media (max-height:300px) {
+  .next-step-bar {
+    position:relative;
+  }
+  html {
+    scroll-padding-bottom:0;
+  }
+}
+
+.comp-overview .level {
+  align-self:flex-start;
+}

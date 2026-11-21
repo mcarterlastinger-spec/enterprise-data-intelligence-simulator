@@ -1,0 +1,371 @@
+/* Aperion v0.3.3 | Base layout and core components from v0.3.2 (page grid, sidebar, header, panels, buttons,
+   tables, record details, notices). Rules kept in original order.
+   Load order: tokens, base, responsive, components, next-step. Do not reorder. */
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  background:var(--ivory);
+  font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;
+  color:var(--ink);
+}
+
+button,input,select {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+/* Keyboard focus (D12, WCAG 1.4.11): Cobalt outline, at least 3:1 on white (6.7:1) and Warm Ivory (6.2:1).
+   On the Midnight sidebar the original amber outline is kept (8.3:1); Cobalt would be 2.5:1 there. */
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,a:focus-visible {
+  outline:3px solid var(--blue);
+  outline-offset:2px;
+}
+
+aside button:focus-visible,aside a:focus-visible {
+  outline-color:#f1a73c;
+}
+
+.layout {
+  display:grid;
+  grid-template-columns:240px minmax(0,1fr);
+  min-height:100vh;
+}
+
+aside {
+  background:var(--navy);
+  color:white;
+  padding:25px 17px;
+}
+
+.brand {
+  font-size:23px;
+  letter-spacing:.14em;
+  font-weight:750;
+  margin-bottom:4px;
+}
+
+.brand-sub {
+  color:#c8d5ec;
+  font-size:11px;
+  letter-spacing:.08em;
+  margin-bottom:34px;
+}
+
+.nav {
+  display:block;
+  width:100%;
+  background:transparent;
+  border:0;
+  color:#e1e9f7;
+  text-align:left;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:7px;
+}
+
+.nav.active,.nav:hover {
+  background:#2457b8;
+  color:#fff;
+}
+
+.nav:disabled {
+  opacity:.48;
+  cursor:not-allowed;
+}
+
+main {
+  min-width:0;
+}
+
+.top {
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  padding:19px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.eyebrow {
+  color:#536a88;
+  font-size:12px;
+  font-weight:750;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.top h1 {
+  font-size:23px;
+  margin:3px 0;
+}
+
+.pill {
+  background:#e9f0fc;
+  color:#164a9c;
+  border-radius:20px;
+  padding:6px 11px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.content {
+  padding:25px 30px;
+  max-width:1350px;
+  margin:auto;
+}
+
+.intro {
+  display:grid;
+  grid-template-columns:1fr 320px;
+  gap:18px;
+}
+
+.panel {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:21px;
+  box-shadow:0 3px 12px #18243a08;
+}
+
+.panel h2 {
+  margin:0 0 12px;
+  font-size:18px;
+}
+
+.panel p {
+  margin:7px 0 13px;
+}
+
+.muted {
+  color:#52647c;
+}
+
+.small {
+  font-size:12px;
+}
+
+.primary {
+  background:var(--blue);
+  border:1px solid var(--blue);
+  color:white;
+  border-radius:7px;
+  padding:9px 14px;
+  font-weight:650;
+}
+
+.secondary {
+  background:white;
+  border:1px solid var(--steel);
+  color:var(--navy);
+  border-radius:7px;
+  padding:9px 14px;
+  font-weight:650;
+}
+
+.primary:disabled,.secondary:disabled {
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.avatar {
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.portrait {
+  width:72px;
+  height:72px;
+  flex:none;
+  border-radius:12px;
+  background:linear-gradient(145deg,#243f70,#8098bb);
+  display:grid;
+  place-items:center;
+  color:white;
+  font-size:26px;
+  font-weight:700;
+  border:3px solid #e6eaf1;
+}
+
+.controls {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.statrow {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin:20px 0;
+}
+
+.stat {
+  background:white;
+  border:1px solid var(--line);
+  padding:16px 18px;
+  border-radius:10px;
+}
+
+.stat strong {
+  font-size:24px;
+  display:block;
+  color:var(--navy);
+}
+
+.toolbar {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.toolbar input {
+  flex:1;
+  min-width:220px;
+}
+
+.toolbar input,.toolbar select {
+  padding:10px;
+  border:1px solid var(--steel);
+  border-radius:7px;
+  background:white;
+  color:var(--ink);
+}
+
+.tablewrap {
+  overflow:auto;
+}
+
+table {
+  border-collapse:collapse;
+  width:100%;
+  min-width:760px;
+}
+
+th {
+  text-align:left;
+  background:#edf1f7;
+  color:#2b3d57;
+  font-size:12px;
+  letter-spacing:.03em;
+}
+
+th,td {
+  padding:12px 10px;
+  border-bottom:1px solid #e0e5ec;
+}
+
+tr:hover td {
+  background:#f5f7fc;
+}
+
+.record {
+  background:none;
+  border:0;
+  color:#164da7;
+  text-decoration:underline;
+  font-weight:700;
+  padding:0;
+  text-align:left;
+}
+
+.status {
+  border-radius:20px;
+  padding:4px 8px;
+  background:#eaf0f8;
+  color:#28486b;
+  font-size:12px;
+}
+
+.status.pending {
+  background:#fff2d9;
+  color:#754b00;
+}
+
+.details {
+  margin-top:17px;
+}
+
+.detailgrid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+
+.field {
+  background:#f6f7f9;
+  border-radius:7px;
+  padding:10px;
+  overflow-wrap:anywhere;
+}
+
+.field b {
+  display:block;
+  font-size:11px;
+  color:#53647a;
+  text-transform:uppercase;
+}
+
+.comparebox {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.comparebox .panel {
+  padding:14px;
+}
+
+.feedback {
+  padding:13px;
+  border-left:4px solid var(--blue);
+  background:#edf2fc;
+  margin-top:12px;
+  border-radius:4px;
+}
+
+.foot {
+  font-size:12px;
+  color:#5c6b80;
+  margin-top:22px;
+}
+
+.hidden {
+  display:none!important;
+}
+
+.checks {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.checks label {
+  background:#f2f5fa;
+  padding:9px 11px;
+  border-radius:7px;
+}
+
+.count {
+  font-size:13px;
+  color:#52647c;
+}
+
+.notice {
+  background:#fff7e8;
+  border:1px solid #eed3a2;
+  border-radius:8px;
+  padding:11px;
+  margin:12px 0;
+}

@@ -1,0 +1,5 @@
+# Developer-only test tools. Nothing here is shipped with the simulator.
+pytest>=8,<10
+playwright>=1.45,<2
+pillow>=10,<13
+numpy>=1.26,<3

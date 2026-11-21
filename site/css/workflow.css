@@ -1,0 +1,249 @@
+/* Aperion v0.4.0 | Styles for the Phase 2 workflow: evidence states, identity decisions, check
+   results, proposal history, and the Golden Record activity. Uses the approved palette from
+   tokens.css (Midnight, Cobalt, Steel Gray, Warm Ivory). Text colors meet 4.5:1 on their backgrounds.
+   Load order: tokens, base, responsive, components, next-step, workflow. */
+
+.sr-only {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+/* ---- evidence matrix ---- */
+.matrix caption {
+  text-align:left;
+}
+
+.role-tag {
+  color:#3d4f68;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  font-size:11px;
+  margin-top:4px;
+}
+
+.state-label {
+  font-weight:700;
+  margin-top:3px;
+  color:#17263d;
+}
+
+.state-conflict,.state-conflict-missing {
+  color:#7a3e00;
+}
+
+.state-missing {
+  color:#4a5568;
+}
+
+.state-context {
+  color:#3d4f68;
+  font-weight:400;
+}
+
+.matrix .context {
+  background:#f6f7fa;
+  color:#3d4f68;
+}
+
+.valueset {
+  display:inline-block;
+  margin-left:8px;
+  padding:1px 7px;
+  border:1px solid #9aa9be;
+  border-radius:10px;
+  font-size:11px;
+  font-weight:700;
+  color:#17263d;
+  background:#fff;
+  white-space:nowrap;
+}
+
+/* ---- identity decisions and check results ---- */
+.decisions select[data-group] {
+  min-width:220px;
+}
+
+.groupresult {
+  border-left-width:5px;
+}
+
+.groupresult.is-eligible {
+  border-left-color:#1d6b35;
+}
+
+.groupresult.is-blocked {
+  border-left-color:#a11b1b;
+}
+
+.groupresult.is-verification {
+  border-left-color:#b36b00;
+}
+
+.groupresult.is-single {
+  border-left-color:var(--steel);
+}
+
+.groupresult .verdict {
+  font-weight:700;
+}
+
+.is-eligible .verdict {
+  color:#1d6b35;
+}
+
+.is-blocked .verdict {
+  color:#a11b1b;
+}
+
+.is-verification .verdict {
+  color:#8a4f00;
+}
+
+.reasons {
+  margin:6px 0 8px;
+  padding-left:20px;
+}
+
+.reasons li {
+  margin:3px 0;
+}
+
+.reasons .warning {
+  color:#7a3e00;
+}
+
+.is-stale {
+  opacity:.72;
+}
+
+.stale-notice {
+  border-color:#d9a441;
+}
+
+.decision-summary {
+  margin:8px 0;
+}
+
+.proposal-state {
+  margin:8px 0;
+}
+
+.history {
+  padding-left:22px;
+}
+
+.history li {
+  margin:5px 0;
+}
+
+/* ---- golden record ---- */
+.golden-group {
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:16px;
+  margin:16px 0;
+  background:#fff;
+}
+
+.golden-group h3 {
+  margin:0 0 10px;
+  color:var(--navy);
+}
+
+.golden-group h3:focus {
+  outline:3px solid var(--blue);
+  outline-offset:3px;
+}
+
+.evidence th,.evidence td,.golden-summary th,.golden-summary td {
+  vertical-align:top;
+}
+
+.golden-form {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:14px;
+  margin:16px 0;
+}
+
+.golden-attr {
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:12px 14px;
+  margin:0;
+  min-width:0;
+  background:var(--ivory);
+}
+
+.golden-attr legend {
+  font-weight:700;
+  color:var(--navy);
+  padding:0 4px;
+}
+
+.golden-attr legend .small {
+  font-weight:400;
+  display:block;
+}
+
+.choice {
+  display:flex;
+  gap:9px;
+  align-items:flex-start;
+  margin:8px 0;
+}
+
+.choice input {
+  margin-top:4px;
+  width:18px;
+  height:18px;
+  flex:none;
+}
+
+.choice label {
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  overflow-wrap:anywhere;
+}
+
+.choice-value {
+  font-weight:600;
+}
+
+.reason-row {
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  margin-top:10px;
+}
+
+.reason-row label {
+  font-size:13px;
+  font-weight:600;
+}
+
+.reason-row select,.reason-row input {
+  padding:8px;
+  border:1px solid #6f7f96;
+  border-radius:6px;
+  background:#fff;
+  font:inherit;
+  max-width:100%;
+}
+
+.golden-status {
+  font-weight:600;
+  margin:8px 0;
+}
+
+.golden-saved h4 {
+  margin:14px 0 6px;
+}

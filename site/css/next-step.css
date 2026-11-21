@@ -1,0 +1,81 @@
+/* Aperion v0.3.3 | Persistent Next Step bar (v0.3.2), including its 700 px breakpoint.
+   Load order: tokens, base, responsive, components, next-step. Do not reorder. */
+
+/* v0.3.2: persistent, context-aware learning navigation */
+.next-step-bar {
+  position:sticky;
+  bottom:12px;
+  z-index:15;
+  margin:22px 0 12px;
+  padding:15px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+  background:#fff;
+  border:2px solid #b8cbee;
+  border-left:6px solid #2457b8;
+  border-radius:12px;
+  box-shadow:0 7px 28px rgba(16,29,53,.17);
+}
+
+.next-step-copy {
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:220px;
+  flex:1;
+}
+
+.next-step-copy strong {
+  color:#101d35;
+  font-size:16px;
+}
+
+.next-step-copy span {
+  font-size:13px;
+  color:#405573;
+}
+
+.next-step-button {
+  background:#2457b8!important;
+  color:white!important;
+  border:2px solid #2457b8!important;
+  border-radius:9px!important;
+  font-size:16px!important;
+  font-weight:700!important;
+  min-height:50px;
+  padding:12px 22px!important;
+  cursor:pointer;
+}
+
+.next-step-button:hover {
+  background:#173f91!important;
+}
+
+.next-step-button:focus-visible {
+  outline:3px solid #2457b8;
+  outline-offset:3px;
+}
+
+.next-step-button:disabled {
+  opacity:.52;
+  cursor:not-allowed;
+}
+
+.next-step-bar:focus-within {
+  border-color:#2457b8;
+}
+
+@media(max-width:700px) {
+  .next-step-bar {
+    bottom:0;
+    margin:16px -12px 0;
+    border-radius:10px 10px 0 0;
+    padding:12px;
+  }
+  .next-step-button {
+    width:100%;
+  }
+}

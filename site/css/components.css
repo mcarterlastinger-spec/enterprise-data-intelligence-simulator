@@ -1,0 +1,111 @@
+/* Aperion v0.3.3 | Components added in v0.3.x: comparison matrix, group results, portraits, audio controls,
+   and stakeholder gallery. Rules kept in original order.
+   Load order: tokens, base, responsive, components, next-step. Do not reorder. */
+
+.matrix {
+  width:max-content;
+  min-width:100%;
+}
+
+.matrix th,.matrix td {
+  min-width:185px;
+  max-width:290px;
+  vertical-align:top;
+  overflow-wrap:anywhere;
+}
+
+.matrix th:first-child {
+  min-width:175px;
+  position:sticky;
+  left:0;
+  background:#edf1f7;
+  z-index:1;
+}
+
+.matrix .conflict {
+  background:#fff2db;
+}
+
+.matrix .missing {
+  background:#f2f2f2;
+  color:#53647a;
+}
+
+.matrix .consistent {
+  background:#edf6ef;
+}
+
+.groupresult {
+  border:1px solid var(--line);
+  padding:14px;
+  border-radius:8px;
+  margin:9px 0;
+}
+
+.groupresult p {
+  margin:6px 0;
+}
+
+select[data-group] {
+  padding:7px;
+  border:1px solid var(--steel);
+  border-radius:6px;
+  background:white;
+}
+
+.portrait {
+  object-fit:cover;
+  object-position:center 27%;
+  background:#e5ebf3;
+}
+
+.audio-toggle,.audio-replay {
+  min-width:104px;
+  transition:background .15s,border-color .15s,box-shadow .15s;
+}
+
+.audio-toggle.is-active,.audio-replay.is-active {
+  background:#123c8c;
+  color:#fff;
+  border-color:#123c8c;
+  box-shadow:0 0 0 3px #9dbbf5;
+}
+
+.audio-toggle:focus-visible,.audio-replay:focus-visible {
+  outline:3px solid #2457b8;
+  outline-offset:3px;
+}
+
+.audio-toggle.is-paused {
+  background:#f1dfb8;
+  color:#563c06;
+  border-color:#bb8e34;
+  box-shadow:0 0 0 3px #f7e8c8;
+}
+
+.cast-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(205px,1fr));
+  gap:12px;
+}
+
+.cast-member {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid var(--line);
+  padding:10px;
+  border-radius:9px;
+}
+
+.cast-member img {
+  height:55px;
+  width:55px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid #d6e1f3;
+}
+
+.cast-member strong {
+  font-size:13px;
+}
